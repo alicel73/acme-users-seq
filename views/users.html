@@ -1,0 +1,22 @@
+{% extends './layout.html' %}
+{% block content %}
+<form action='/users' method='POST'>
+    <div>
+        <label>Username</label>
+        <input name='name' value='Enter name for user'/>
+    </div>
+    <button class="btn btn-primary">Create User</button>
+</form>
+<ul class="list-unstyled">
+    {% for user in users %}
+    <li>
+    
+        {{user.name}}
+        
+        <form method='POST' action='/users/{{user.id}}?_method=DELETE'>
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
